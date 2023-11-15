@@ -5,30 +5,9 @@ console.log(galleryItems);
 
 
 const containerGallery = document.querySelector(".gallery");
-containerGallery.addEventListener("click", Onclick);
-function Onclick(evt) {
-  blockDefaultSettings(evt);
-  if (evt.target.nodeName !== "IMG") {
-    return;
-  }
-  const createModal =
-    basicLightbox.create(`<img src="${evt.target.dataset.source}" width="800" height="600">
- `);
-  createModal.show();
 
-  containerGallery.addEventListener("keydown", (evt) => {
-    if (evt.code === "Escape") {
-      createModal.close();
-    }
-  });
-}
-
-function blockDefaultSettings(evt) {
-  evt.preventDefault();
-}
-
-containerGallery.classList.add(".gallery");
 const listGalleryMarkup = createGalleryMarkup(galleryItems);
+
 function createGalleryMarkup(items) {
   return items
     .map(
@@ -48,5 +27,28 @@ function createGalleryMarkup(items) {
     )
     .join("");
 }
-
 containerGallery.innerHTML = listGalleryMarkup;
+
+containerGallery.addEventListener("click", Onclick);
+
+function Onclick(evt) {
+  evt.preventDefault();
+  if (evt.target.nodeName !== "IMG") {
+    return;
+  }
+  const createModal =
+    basicLightbox.create(`<img src="${evt.target.dataset.source}" width="800" height="600">
+ `);
+  createModal.show();
+
+ document.addEventListener("keydown", (evt) => {
+    if (evt.code === "Escape") {
+      createModal.close();
+    }
+  });
+}
+
+
+
+
+
