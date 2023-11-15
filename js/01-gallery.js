@@ -44,6 +44,7 @@ function Onclick(evt) {
  document.addEventListener("keydown", (evt) => {
     if (evt.code === "Escape") {
       createModal.close();
+      document.removeEventListener("keydown", handleKeyDown);
     }
   });
 }
