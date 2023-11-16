@@ -29,9 +29,9 @@ function createGalleryMarkup(items) {
 }
 containerGallery.innerHTML = listGalleryMarkup;
 
-containerGallery.addEventListener("click", Onclick);
+containerGallery.addEventListener("click", onClick);
 
-function Onclick(evt) {
+function onClick(evt) {
   evt.preventDefault();
   if (evt.target.nodeName !== "IMG") {
     return;
@@ -43,11 +43,17 @@ function Onclick(evt) {
 
  document.addEventListener("keydown", (evt) => {
     if (evt.code === "Escape") {
-      createModal.close();
-      document.removeEventListener("keydown", handleKeyDown);  
+      createModal.close();  
     }
   });
-}
+
+  onShow: (instance) => {
+    window.addEventListener("keydown", onClick);
+  };
+  onClose: (instrance) => {
+    window.removeEventListener('keydown', onClick);
+  }
+} 
 
 
 
