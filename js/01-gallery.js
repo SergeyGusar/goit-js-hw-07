@@ -51,7 +51,7 @@ function onClick(evt) {
     window.addEventListener("keydown", onClick);
   };
   onClose: (instrance) => {
-    window.removeEventListener('keydown', onClick);
+    window.removeEventListener("keydown", onClick);
   }
 } 
 
