@@ -42,17 +42,19 @@ function onClick(evt) {
   createModal.show();
 
  document.addEventListener("keydown", (evt) => {
-    if (evt.code === "Escape") {
-      createModal.close();  
-    }
-  });
-
   onShow: (instance) => {
     window.addEventListener("keydown", onClick);
   };
-  onClose: (instrance) => {
-    window.removeEventListener("keydown", onClick);
-  }
+    if (evt.code === "Escape") {
+      createModal.close(); 
+      onClose: (instrance) => {
+        window.removeEventListener("keydown", onClick);
+      } 
+    }
+  });
+
+  
+  
 } 
 
 
